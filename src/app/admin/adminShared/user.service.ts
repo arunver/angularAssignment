@@ -51,7 +51,8 @@ export class UserService implements CanActivate {
             alert(`Welcome ${this.authUser.email}`);
             this.loggedInUser = this.authUser.email;
             this.userLoggedIn = true;
-            this.router.navigate(['/admin']);
+           // this.router.navigate(['/admin']);
+           this.router.navigate(['']);
         }
     }
 

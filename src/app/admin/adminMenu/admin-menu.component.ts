@@ -1,8 +1,11 @@
+import { NgModule } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../adminShared/user.service';
 import { Router } from '@angular/router';
 
+
 @Component({
+  selector:'admin-menu',
   templateUrl: './admin-menu.component.html',
   styleUrls: ['./admin-menu.component.css']
  })

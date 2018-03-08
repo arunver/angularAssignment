@@ -22,8 +22,7 @@ import { AdminModule }  from './admin/admin.module';
     ],
     declarations: [
         AppComponent,
-        NavComponent,
-      
+        NavComponent,      
         HomeComponent,
         ProductListComponent,
         ErrorComponent
