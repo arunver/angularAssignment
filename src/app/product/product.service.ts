@@ -1,26 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Http,Response } from '@angular/http';
 import {Observable} from 'rxjs/Observable';
-import {ProductData} from './product';
-
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class ProductService{
     private _url:string="";
     constructor(private _http: Http){}
 
-    getProducts(): Observable<ProductData[]>{
-        return this._http.get('')
-            .map((response:Response)=> response.json)
-            .catch(this._errorHandler);
+    getProducts(){
+       // console.log(this._http.get('../app/producct/product-data.json'));
+        return this._http.get('product-data.json')
+            .map(res => res.json())
+            .catch(this.handleError);
     }
 
-    _errorHandler(_error: Response){
-        console.error( _error);
-        return Observable.throw(_error || "Server Error");
+    handleError:(errorResponse:any)=>Observable<any>=(errorResponse:any)=>{
+
+        let res=<Response>errorResponse;
+        let error = res.json();
+        let emsg= error? ( error.error ? error.error: JSON.stringify(error)):(res.statusText ||'unknown error');
+        console.log(emsg);
+        return Observable.of();
     }
 
 }

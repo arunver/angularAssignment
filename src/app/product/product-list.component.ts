@@ -1,26 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductData } from './product';
+import { Product } from './product';
 import { ProductService } from './product.service';
 
 
 @Component({
-    selector:'<product-list></product-list>',
-    templateUrl:`
-        <div *ngFor="let product of products">
-
-        </div>
-    `,
+    selector:'product-list',
+    
+    templateUrl:'product-list.component.html',
     providers:[ProductService]
 })
 export class ProductListComponent implements OnInit{
     
     
-    products : ProductData[];
-
+    products : Product[];
+    error:string;
     constructor(private _productService: ProductService){}
     ngOnInit(){
         this._productService.getProducts()
-            .subscribe(productData => this.products = productData);
+            .subscribe(products => this.products = products,
+                         err => {console.log("Error occurred")});
+
     }
 
 }

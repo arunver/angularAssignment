@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import {ProductListComponent} from './product/product-list.component';
 import { ErrorComponent } from './error/error.component';
 import { AppRoutingModule } from './shared/app.routing';
+import {ProductService} from './product/product.service';
 
 import { AdminModule }  from './admin/admin.module';
 
@@ -22,10 +23,12 @@ import { AdminModule }  from './admin/admin.module';
     declarations: [
         AppComponent,
         NavComponent,
+      
         HomeComponent,
         ProductListComponent,
         ErrorComponent
     ],
+    providers:[ProductService],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }
